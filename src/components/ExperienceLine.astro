@@ -1,0 +1,53 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+    {
+        date: "Julio de 2024",
+        title: "Curso de Python para Analisis de Datos e IA",
+        description:
+            "Curso en donde aprendí no solo uno de mis lenguajes favoritos, sino tambien que hizo que me interesara el analisis y la ingenieria de datos",
+        link: "#",
+    },
+    {
+        date: "Marzo de 2024",
+        title: "Estudiante de Programación e Innovación Tecnologica",
+        description:
+            "Cursando el 1er Año de la Carrera. Becado",
+        link: "#",
+    },
+    {
+        date: "Diciembre de 2023",
+        title: "Curso de Backend con React.js",
+        description:
+            "Obtuve el certificado por haber aprobado con exito el curso en Silicon Misiones en convenio con la UTN, cuyo trabajo final fue recrear un e-commerce.",
+        link: "#",
+    },
+    {
+        date: "Diciembre de 2023",
+        title: "Programa de Competencias Laborales",
+        description:
+            "Obtuve el certificado por haber participado en el taller de Competencias Laborales correspondiente al Eje de Formación Profesional de Silicon Misiones.",
+        link: "#",
+    },
+    {
+        date: "Abril de 2023",
+        title: "Curso de FrontEnd",
+        description:
+            "Obtuve el certificado por haber aprobado con éxito el curso en Silicon Misiones en convenio con la UTN, cuyo trabajo final fue hacer una página utiizando la API de Rick & Morty",
+        link: "#",
+    },
+];
+---
+
+<div class="flex items-center justify-center">
+    <ol class="relative border-s border-slate-700 ml-3">
+        {
+            EXPERIENCE.map((experience) => (
+                <li class="mb-10 ms-4">
+                    <ExperienceItem {...experience} />
+                </li>
+            ))
+        }
+    </ol>
+</div>
