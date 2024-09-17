@@ -1,9 +1,29 @@
+---
+import ContactWindow from "./ContactWindow.astro";
+---
+
 <nav class="flex flex-col items-center border-b-2 border-gray-300">
     <h1 class="text-6xl font-medium pt-3">Tiziano</h1>
     <ul class="flex justify-evenly items-center w-full pt-10 pb-4 text-2xl">
-        <li class="hover:underline cursor-pointer font-thin"><a>Sobre mi</a></li>
-        <li class="hover:underline cursor-pointer font-thin"><a>Proyectos</a></li>
+        <li class="hover:underline cursor-pointer font-thin">
+            <a>Sobre mi</a>
+        </li>
+        <li class="hover:underline cursor-pointer font-thin">
+            <a>Proyectos</a>
+        </li>
         <li class="hover:underline cursor-pointer font-thin"><a>Blog</a></li>
-        <li class="hover:underline cursor-pointer font-thin"><a>Contacto</a></li>
+        <li class="font-thin relative">
+            <button class="hover:underline" id="contact-but">Contacto</button>
+            <ContactWindow />
+        </li>
     </ul>
 </nav>
+
+<script>
+    document
+        .getElementById("contact-but")
+        .addEventListener("click", function () {
+            const fixedComponent = document.getElementById("componente");
+            fixedComponent.classList.toggle("esconder");
+        });
+</script>

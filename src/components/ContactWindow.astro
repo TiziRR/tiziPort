@@ -1,23 +1,52 @@
 ---
-import Github from '../icons/Github.astro'
-import Gmail from '../icons/Gmail.astro'
-import Instagram from '../icons/Instagram.astro'
-import Linkedin from '../icons/Linkedin.astro'
+import Github from "../icons/Github.astro";
+import Gmail from "../icons/Gmail.astro";
+import Instagram from "../icons/Instagram.astro";
+import Linkedin from "../icons/Linkedin.astro";
 
-import ContactWindowItem from './ContactWindowItem.astro'
+import ContactWindowItem from "./ContactWindowItem.astro";
 ---
 
-<div class="fixed z-20 top-0 right-0 flex  bg-red-500">
-        <ContactWindowItem href="#">
-            <Github/>
-        </ContactWindowItem>
-        <ContactWindowItem href="#">
-            <Gmail/>
-        </ContactWindowItem>
-        <ContactWindowItem href="#">
-            <Instagram/>
-        </ContactWindowItem>
-        <ContactWindowItem href="#">
-            <Linkedin/>
-        </ContactWindowItem>
+<div
+    id="componente"
+    class="esconder absolute right-0 z-20 size-64 flex flex-col justify-evenly items-center border-2 border-black/20 rounded-md bg-white/55"
+>
+    <ContactWindowItem href="#" class="bg-white w-1/2 rounded-md contact-item">
+        <Github />
+        <span class="contact-text text-sm">GitHub</span>
+    </ContactWindowItem>
+    <ContactWindowItem href="#" class="bg-white w-1/2 rounded-md contact-item">
+        <Gmail />
+        <span class="contact-text text-sm">Gmail</span>
+    </ContactWindowItem>
+    <ContactWindowItem href="#" class="bg-white w-1/2 rounded-md contact-item">
+        <Instagram />
+        <span class="contact-text text-sm">Instagram</span>
+    </ContactWindowItem>
+    <ContactWindowItem href="#" class="bg-white w-1/2 rounded-md contact-item">
+        <Linkedin />
+        <span class="contact-text text-sm">Linkdln</span>
+    </ContactWindowItem>
 </div>
+
+<style>
+    .esconder {
+        visibility: hidden;
+    }
+
+    /* Estilos generales de los íconos */
+    .contact-item {
+        display: flex;
+        align-items: center;
+        position: relative;
+        transition:
+            transform 0.5s ease,
+            opacity 0.5s ease;
+    }
+
+    /* Oculta el texto por defecto */
+    .contact-text {
+        margin-left: 10px;
+    }
+
+</style>
