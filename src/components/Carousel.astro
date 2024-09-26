@@ -1,5 +1,5 @@
 <div class="my-10 slider" style="--width: 100px; --height: 90px; --cantidad: 8;">
-    <div class="list">
+    <div class="list mx-20">
         <div class="item" style="--position: 1;"><img src="public/assets/astro.svg" alt=""></div>
         <div class="item" style="--position: 2;"><img src="public/assets/css.svg" alt=""></div>
         <div class="item" style="--position: 3;"><img src="public/assets/figma.svg" alt=""></div>
@@ -15,19 +15,21 @@
     .slider {
         width: 100%;
         height: var(--height);
+        display: flex;
+        justify-content: center;
         overflow: hidden;
-        mask-image: linear-gradient(
-            to right,
-            transparent,
-            black 10% 90%,
-            transparent
-        );
 
         > .list {
             display: flex;
             width: 100%;
             min-width: calc(var(--width) * var(--cantidad));
             position: relative;
+            mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 10% 90%,
+            transparent
+        );
 
             > .item {
                 width: var(--width);
