@@ -10,13 +10,13 @@ const { title, description, date } = Astro.props;
 
 
 <time
-    class="text-center underline text-sm font-normal leading-none p-5"
+    class="text-center underline dark:no-underline dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-sky-500 dark:to-sky-600 text-sm font-normal leading-none p-5"
     >{date}</time
 >
-<h3 class="text-lg font-semibold text-black">
+<h3 class="text-lg font-semibold text-black dark:text-slate-300">
     {title}
 </h3>
-<p class="mb-4 text-base font-normal text-slate-800 text-pretty">
+<p class="mb-4 text-base font-normal text-slate-800 text-pretty dark:text-blue-600">
     {description}
 </p>
 

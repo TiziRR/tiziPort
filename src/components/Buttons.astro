@@ -1,5 +1,93 @@
-<button id="darkMode" class="fixed bottom-10 left-10">
+<!-- <button id="theme-toggle" class="fixed bottom-10 left-10 dark:bg-gray-800">
     <svg
+        id="theme-toggle-light-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="35"
+        height="35"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-sun"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path><path
+            d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"
+        ></path></svg
+    >
+</button> -->
+<script>
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    const lightIcon = document.getElementById("theme-toggle-light-icon");
+    const darkIcon = document.getElementById("theme-toggle-dark-icon");
+
+    // Verificar el estado inicial del tema
+    if (
+        localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+        document.documentElement.classList.add("dark");
+        lightIcon.classList.remove("hidden");
+        darkIcon.classList.add("hidden");
+    } else {
+        document.documentElement.classList.remove("dark");
+        lightIcon.classList.add("hidden");
+        darkIcon.classList.remove("hidden");
+    }
+
+    themeToggleBtn.addEventListener("click", function () {
+        // Alternar las clases del tema
+        document.documentElement.classList.toggle("dark");
+        lightIcon.classList.toggle("hidden");
+        darkIcon.classList.toggle("hidden");
+
+        // Guardar el estado del tema en localStorage
+        if (document.documentElement.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
+    });
+
+    const scrollTopBtn = document.getElementById("toUp");
+
+    // Mostrar el botón solo cuando el usuario haga scroll hacia abajo
+    window.onscroll = function () {
+        if (
+            document.body.scrollTop > 100 ||
+            document.documentElement.scrollTop > 100
+        ) {
+            scrollTopBtn.style.display = "block";
+        } else {
+            scrollTopBtn.style.display = "none";
+        }
+    };
+
+    // Función para scroll con animación controlada
+    scrollTopBtn.addEventListener("click", function () {
+        let currentScroll =
+            document.documentElement.scrollTop || document.body.scrollTop;
+        if (currentScroll > 0) {
+            window.requestAnimationFrame(scrollToTop);
+        }
+
+        function scrollToTop() {
+            currentScroll =
+                document.documentElement.scrollTop || document.body.scrollTop;
+            if (currentScroll > 0) {
+                window.scrollTo(0, currentScroll - currentScroll / 10); // Controla la velocidad restando un décimo del scroll
+                window.requestAnimationFrame(scrollToTop); // Sigue llamando a la función hasta llegar al tope
+            }
+        }
+    });
+</script>
+
+<button id="theme-toggle" class="fixed bottom-10 left-10 rounded-full">
+    <svg
+        class="text-gray-200 size-7"
+        id="theme-toggle-light-icon"
         xmlns="http://www.w3.org/2000/svg"
         width="35"
         height="35"
@@ -15,7 +103,25 @@
             d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"
         ></path></svg
     >
+    <svg
+        class="text-gray-800 size-7"
+        id="theme-toggle-dark-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-moon"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
+        ></path></svg
+    >
 </button>
+
 <button id="toUp" class="fixed bottom-10 right-10">
     <svg
         xmlns="http://www.w3.org/2000/svg"
