@@ -1,0 +1,149 @@
+---
+import Css from "../icons/Css.astro";
+import Javascript from "../icons/Javascript.astro";
+import Python from "../icons/Python.astro";
+import React from "../icons/React.astro";
+import Html from "../icons/Html.astro";
+import AstroLogo from "../icons/AstroLogo.astro";
+import Github from "../icons/Github.astro";
+import Search from "../icons/Search.astro";
+import Mongo from "../icons/Mongo.astro";
+import Tailwind from "../icons/Tailwind.astro";
+
+const TAGS = {
+    HTML: {
+        name: "HTML",
+        class: "bg-red-400 text-white",
+        icon: Html,
+    },
+    CSS: {
+        name: "CSS",
+        class: "bg-blue-500 text-white",
+        icon: Css,
+    },
+    JAVASCRIPT: {
+        name: "JAVASCRIPT",
+        class: "bg-yellow-600 text-white",
+        icon: Javascript,
+    },
+    REACT: {
+        name: "REACT",
+        class: "bg-sky-600 text-white",
+        icon: React,
+    },
+    PYTHON: {
+        name: "PYTHON",
+        class: "bg-sky-200 text-white",
+        icon: Python,
+    },
+    ASTRO: {
+        name: "ASTRO",
+        class: "bg-orange-700 text-white",
+        icon: AstroLogo,
+    },
+    MONGO: {
+        name: "MONGODB",
+        class: "bg-green-500 text-white",
+        icon: Mongo,
+    },
+    TAILWIND: {
+        name: "TAILWINDCSS",
+        class: "bg-sky-700 text-white",
+        icon: Tailwind,
+    },
+};
+
+const TAGLINK = {
+    SEARCH: {
+        name: "SEARCH",
+        class: "bg-black text-white",
+        icon: Search,
+    },
+    GITHUB: {
+        name: "GITHUB",
+        class: "bg-black text-white",
+        icon: Github,
+    },
+};
+
+const PROJECTS = [
+    {
+        title: "API Rick & Morty - Primer Proyecto",
+        description:
+            "Proyecto realizado en el Curso de Frontend, con el fin de aprender a consumir una API y dar primeros pasos en estilado de páginas.",
+        link: "https://first-project-tiziano.vercel.app/",
+        github: "https://github.com/TiziRR/First-Project",
+        image: "/projectsImgs/svgl.jpg",
+        tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
+        tagLink: [TAGLINK.GITHUB, TAGLINK.SEARCH],
+    },
+    {
+        title: "Prueba de un E-commerce - Segundo Proyecto",
+        description:
+            "Proyecto realizado en el Curso de Backend con React.js y en conjunto con mis compañeros Lautaro Zalazar y Gustavo Gomez, que consistió en recrear un e-commerce a elección.",
+        link: "https://back-end-react-final-project.vercel.app/",
+        github: "https://github.com/LautaroJLZ/BackEndReact",
+        image: "/projectsImgs/secondProject.jpg",
+        tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.MONGO],
+        tagLink: [TAGLINK.GITHUB, TAGLINK.SEARCH],
+    },
+    {
+        title: "Primer Portfolio",
+        description:
+            "Proyecto realizado en el Curso de Backend con React.js que consistió en elegir un diseño de portfolio web en Behance y recrearlo.",
+        link: "https://tp-final1-virid.vercel.app/",
+        github: "https://github.com/TiziRR/tp-final1",
+        image: "/projectsImgs/primerPort.jpg",
+        tags: [TAGS.REACT, TAGS.TAILWIND],
+        tagLink: [TAGLINK.GITHUB, TAGLINK.SEARCH],
+    },
+    {
+        title: "Nuevo Portfolio",
+        description:
+            "Actualización de Portfolio utilizando Astro. Basado en video de midudev",
+        link: "https://tiziano-rossi-raczkoski-portfolio.vercel.app/",
+        github: "https://github.com/TiziRR/newPortfolio",
+        image: "/projectsImgs/nuevoPortImg.jpg",
+        tags: [TAGS.ASTRO, TAGS.TAILWIND],
+        tagLink: [TAGLINK.GITHUB, TAGLINK.SEARCH],
+    },
+];
+---
+
+<section class="flex flex-col justify-center items-center w-full py-6">
+    {
+        PROJECTS.map(({ title, description, link, github, image, tags }) => (
+            <article class="mt-5 w-2/3">
+                <h3 class="text-2xl font-semibold text-black mb-2 dark:text-white">
+                    {title}
+                </h3>
+                <p class="text-lg mb-4 text-pretty dark:text-slate-400">{description}</p>
+                <ul class="flex  gap-x-2 flex-row mb-2">
+                    {tags.map((tag) => (
+                        <li>
+                            <span
+                                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-3`}
+                            >
+                                <tag.icon class="size-4" />
+                                {tag.name}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+                <img
+                    class="rounded shadow-2xl shadow-white/10 w-full"
+                    src={image}
+                    alt={`Captura de pantalla del proyecto ${image}`}
+                />
+                <div class="flex flex-row gap-x-3">
+                    <a href={link} target="_blank">
+                        <TAGLINK.SEARCH.icon class="size-7 mt-2 hover:scale-105 transition duration-300 ease-in-out dark:text-white" />
+                    </a>
+                    <a href={github} target="_blank">
+                        <TAGLINK.GITHUB.icon class="size-7 mt-2 hover:scale-105 transition duration-300 ease-in-out dark:text-white" />
+                    </a>
+                </div>
+            </article>
+        ))
+    }
+</section>
